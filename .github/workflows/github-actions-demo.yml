@@ -20,7 +20,7 @@ jobs:
       - name: Install Truffle Dependencies
         run: npm install --save @truffle/hdwallet-provider dotenv @openzeppelin/contracts @openzeppelin/test-helpers
 
-      - name Show version
+      - name: Show version
         run: truffle version
 
       - name: Check out repository code
