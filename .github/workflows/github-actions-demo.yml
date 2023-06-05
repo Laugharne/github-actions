@@ -24,9 +24,14 @@ jobs:
       - name: Show versions
         run: truffle version
 
+      - name: Run Codechecks
+        run: npx codechecks
+        env:
+          CC_SECRET: ${{ secrets.CC_SECRET }}
+
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - name: echo "🖥️ Run Truffle Test with CI=true for Codechecks."
-        run: truffle test
+        run: CI=true truffle test
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
