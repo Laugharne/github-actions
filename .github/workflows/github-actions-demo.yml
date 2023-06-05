@@ -6,13 +6,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Show NodeJS version
         run: npm --version
+
       - name: Install Truffle
         run: npm install truffle@5.9.2 -g
+
+      - name: Install Truffle Dependencies
+        run: npm install
+        run: npm install @truffle/hdwallet-provider
+        run: npm install --save dotenv
+        run: npm install @openzeppelin/contracts --save
+        run: npm install @openzeppelin/test-helpers --save
+
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
