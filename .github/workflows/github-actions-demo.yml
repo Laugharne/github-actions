@@ -5,11 +5,12 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "Job triggered by ${{ github.event_name }} event."
+      - run: echo "Running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "Branch = ${{ github.ref }} Repository = ${{ github.repository }}."
 
-      - uses: actions/checkout@v3
+      - name: Check out repository code
+        uses: actions/checkout@v3
 
       - name: Show NodeJS version
         run: node --version
@@ -20,14 +21,12 @@ jobs:
       - name: Install Truffle Dependencies
         run: npm install --save @truffle/hdwallet-provider dotenv @openzeppelin/contracts @openzeppelin/test-helpers
 
-      - name: Show version
+      - name: Show versions
         run: truffle version
 
-      - name: Check out repository code
-        uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - name: echo "🖥️ Run Truffle Test with CI=true for Codechecks."
-        run: CI=true truffle test
+        run: truffle test
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
