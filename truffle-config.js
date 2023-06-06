@@ -83,11 +83,13 @@ module.exports = {
     mumbai: {
       provider: function() { 
         const privateKey = process.env.MNEMONIC;
+        const providerUrl = "https://polygon-mumbai.g.alchemy.com/v2/"+process.env.ALCHEMY_ID;
         return new HDWalletProvider(
           {mnemonic:{
             privateKey, 
+            providerUrl
             //phrase: `${process.env.MNEMONIC}`, 
-            `https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_ID}`
+            //`https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_ID}`
           }}
         )
       },
