@@ -84,6 +84,7 @@ module.exports = {
       provider: function() { 
         const privateKey = process.env.MNEMONIC;
         const providerUrl = "https://polygon-mumbai.g.alchemy.com/v2/"+process.env.ALCHEMY_ID;
+        console.log(providerUrl);
         return new HDWalletProvider(
           {mnemonic:{
             privateKey, 
