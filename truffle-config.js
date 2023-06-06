@@ -80,6 +80,18 @@ module.exports = {
       },
       network_id: 5, // --> https://chainlist.org/?search=goerli&testnets=true
     },
+    mumbai: {
+      provider: function() { 
+        return new HDWalletProvider(
+          //{mnemonic:{
+            /*phrase:*/`${process.env.MNEMONIC}`, 
+            /*providerUrl:*/`https://polygon-mumbai.g.alchemy.com/v2/${process.env.ALCHEMY_ID}`
+          //}}
+        )
+      },
+      network_id: 80001, // --> https://chainlist.org/?search=mumbai&testnets=true
+    },
+
     //
     // An additional network, but with some advanced options…
     // advanced: {
